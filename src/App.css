@@ -1,38 +1,201 @@
-.App {
-  text-align: center;
+/* 全局设置 */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: #756c6c; /* 取色值 */
+  color: #f5eded; /* 深色文字，以保证对比度 */
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* 导航栏 */
+.navbar {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  /* 移除白色背景或其他颜色 */
+  background-color: transparent; 
+  /* 如果你想让它悬浮在顶部，可考虑加一些阴影 */
+  /* box-shadow: 0 1px 5px rgba(0,0,0,0.1); */
+}
+
+.navbar .logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar li {
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.navbar li:hover {
+  color: #ff6600;
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 2rem;
+  /* 去掉原本的背景色 */
+  background-color: transparent;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
-.App-link {
-  color: #61dafb;
+.hero-image-container {
+  flex: 1;
+  max-width: 600px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.hero-image-container img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  max-width: 100%;
+  height: auto;
+}
+
+.hero-text-container {
+  flex: 1;
+  padding: 2rem;
+  /* 文字依然用深色 */
+  color: #333;
+}
+
+.hero-text-container h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.hero-text-container h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #ff6600;
+}
+
+.hero-text-container p {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.hero-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #ff6600;
+  color: #fff;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.hero-button:hover {
+  background-color: #e65500;
+}
+
+/* 当屏幕宽度小于 768px（常见移动端阈值）时，让布局上下堆叠 */
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 1rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .navbar ul {
+    margin-top: 1rem;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-image-container {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .hero-image-container img {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  /* 移除底部背景色，改成透明 */
+  background-color: transparent;
+  color: #666;
+}
+
+/* 让整个区块用白色背景，并在上下左右留出一定空白 */
+.introduction {
+  background-color: #fff;
+  padding: 4rem 1rem;  /* 根据需要调整 */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* 居中内容，并限制文本最大宽度 */
+.introduction-container {
+  max-width: 800px;  
+  margin: 0 auto;    
+  text-align: center; /* 文本居中对齐 */
+  color: #000;        /* 黑色文字 */
+}
+
+/* 大标题样式 */
+.introduction-container h2 {
+  font-family: "Helvetica Neue", Arial, sans-serif; /* 或其他字体，如 Poppins、Roboto 等 */
+  font-weight: 700;     /* 粗体，呈现类似黑体的效果 */
+  font-size: 2.2rem;    /* 根据需要微调，2.2rem ~ 3rem 都可 */
+  line-height: 1.2;     /* 行高稍小，让标题行更紧凑 */
+  margin-bottom: 1.5rem;
+}
+
+/* 段落样式 */
+.introduction-container p {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;     /* 常规文字 */
+  font-size: 1rem;      /* 根据需要微调 */
+  line-height: 1.6;     /* 段落更舒适的行距 */
+  max-width: 700px;     /* 限制段落宽度，防止一行太长 */
+  margin: 0 auto;       /* 居中 */
+  color: #000;
+}
+
+/* Responsive Typography */
+html {
+  font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 12px;
   }
 }
