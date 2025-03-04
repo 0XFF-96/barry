@@ -11,9 +11,11 @@ function Hero() {
 
       {/* 右侧文字 */}
       <div className="hero-text-container">
-        <h1>Alejandra Cruz is a singer and</h1>
-        <h2>songwriter(作曲家)</h2>
-        <p>from Barcelona, Spain.</p>
+        <h1>Barry Tognolini</h1>
+
+        <h2>is a seasoned music professional currently serving as a Manager at Steinway & Sons in New York </h2>
+        
+        <p>from Perth, Austrilia.</p>
         <p>Her new album is available now.</p>
         <a href="#listen-now" className="hero-button">Listen Now</a>
       </div>

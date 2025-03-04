@@ -3,8 +3,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  background-color: #756c6c; /* 取色值 */
-  color: #f5eded; /* 深色文字，以保证对比度 */
+  background: linear-gradient(to right, #8f8f8f, #585757);
+  color: #eae2e2; /* 深色文字，以保证对比度 */
   box-sizing: border-box;
 }
 
@@ -37,7 +37,7 @@ body {
 }
 
 .navbar li:hover {
-  color: #ff6600;
+  color: #0a0a0a;
 }
 
 .nav-link {
@@ -48,7 +48,7 @@ body {
 }
 
 .nav-link:hover {
-  color: #ff6600;  /* 保持原有的悬停效果 */
+  color: #2d2a28;  /* 保持原有的悬停效果 */
 }
 
 /* Hero */
@@ -59,13 +59,14 @@ body {
   justify-content: center;
   padding: 2rem;
   /* 去掉原本的背景色 */
+  min-height: 100vh;
   background-color: transparent;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-.hero-image-container {
+/* .hero-image-container {
   flex: 1;
   max-width: 600px;
 }
@@ -76,13 +77,57 @@ body {
   object-fit: cover;
   max-width: 100%;
   height: auto;
+} */
+
+.hero-image-container {
+  flex: 4;
+  position: relative;
+  overflow: hidden;  /* 隐藏溢出部分 */
+  background: linear-gradient(to right, #8f8f8f, #585757);  /* 与背景一致 */
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;  /* 略微降低不透明度 */
+  transition: opacity 0.3s ease;
+  filter: 
+    brightness(0.9)  /* 降低亮度 */
+    contrast(1.1)    /* 略微增加对比度 */
+    saturate(0.9);   /* 降低饱和度 */
+}
+
+.hero-image:hover {
+  opacity: 1;
+  filter: 
+    brightness(1)
+    contrast(1)
+    saturate(1);
+}
+
+
+/* 可选：添加渐变遮罩 */
+.hero-image-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to right, 
+    rgba(143, 143, 143, 0.2), 
+    rgba(88, 87, 87, 0.2)
+  );
+  z-index: 1;
+  pointer-events: none;
 }
 
 .hero-text-container {
-  flex: 1;
+  flex: 6; 
   padding: 2rem;
-  /* 文字依然用深色 */
-  color: #333;
+  color: #eeecea;
 }
 
 .hero-text-container h1 {
@@ -93,7 +138,7 @@ body {
 .hero-text-container h2 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #ff6600;
+  color: #eeecea;
 }
 
 .hero-text-container p {
@@ -104,7 +149,7 @@ body {
 .hero-button {
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  background-color: #ff6600;
+  background-color: #4d4d56;
   color: #fff;
   border: none;
   text-decoration: none;
@@ -115,7 +160,7 @@ body {
 }
 
 .hero-button:hover {
-  background-color: #e65500;
+  background-color: #6758b6;
 }
 
 /* 当屏幕宽度小于 768px（常见移动端阈值）时，让布局上下堆叠 */
@@ -156,43 +201,43 @@ body {
   background-color: transparent;
   color: #666;
 }
+/* 
 
-/* 让整个区块用白色背景，并在上下左右留出一定空白 */
+/* 外层容器：占据大部分屏幕高度，内容居中 */
 .introduction {
-  background-color: #fff;
-  padding: 4rem 1rem;  /* 根据需要调整 */
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  display: flex;               /* 让子元素可使用 flex 布局 */
+  flex-direction: column;
+  justify-content: center;     /* 垂直居中 */
+  align-items: center;         /* 水平居中 */
+  min-height: 100vh;            /* 占据至少80%屏幕高度，视需要可调 */
+  background-color: #fff;      /* 白色背景，可根据需求更改 */
+  padding: 2rem 1rem;          /* 内边距，避免文字紧贴边缘 */
+  text-align: center;          /* 让文字在容器内居中 */
 }
 
-/* 居中内容，并限制文本最大宽度 */
+/* 内层容器：限制最大宽度，让文字不变得太宽 */
 .introduction-container {
-  max-width: 800px;  
-  margin: 0 auto;    
-  text-align: center; /* 文本居中对齐 */
-  color: #000;        /* 黑色文字 */
+  max-width: 800px;            /* 文字行宽限制 */
+  margin: 0 auto;
 }
 
-/* 大标题样式 */
-.introduction-container h2 {
-  font-family: "Helvetica Neue", Arial, sans-serif; /* 或其他字体，如 Poppins、Roboto 等 */
-  font-weight: 700;     /* 粗体，呈现类似黑体的效果 */
-  font-size: 2.2rem;    /* 根据需要微调，2.2rem ~ 3rem 都可 */
-  line-height: 1.2;     /* 行高稍小，让标题行更紧凑 */
-  margin-bottom: 1.5rem;
+/* 标题文字：大一些、稍微加粗 */
+.introduction-container h1 {
+  font-size: 2rem;             /* 你可根据需求调整大小，如 2.5rem 等 */
+  font-weight: 700;            /* 粗体 */
+  line-height: 1.2;
+  color: #131212;
+  margin-bottom: 1.5rem;       /* 与下面文字留出间距 */
 }
 
-/* 段落样式 */
+/* 正文文字：较小，行距舒适 */
 .introduction-container p {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-weight: 400;     /* 常规文字 */
-  font-size: 1rem;      /* 根据需要微调 */
-  line-height: 1.6;     /* 段落更舒适的行距 */
-  max-width: 700px;     /* 限制段落宽度，防止一行太长 */
-  margin: 0 auto;       /* 居中 */
-  color: #000;
+  font-size: 1rem;             /* 可根据需要微调 */
+  line-height: 1.6;            /* 更好的可读性 */
+  color: #333;                 /* 字体颜色可调 */
+  margin-bottom: 0;            /* 如果不需要更多段落间距，可设为 0 */
 }
+
 
 /* Responsive Typography */
 html {
@@ -214,7 +259,7 @@ html {
 
 /* 外层区块：灰色背景、上下留白、文字居中 */
 .discography {
-  background-color: #4a4a4a;  /* 示例深灰，可根据需要调整 */
+  background: linear-gradient(to right, #8f8f8f, #585757);
   color: #fff;               /* 在深灰背景上用白字 */
   text-align: center;
   padding: 4rem 1rem;        /* 上下 4rem、左右 1rem */
@@ -282,7 +327,7 @@ html {
 }
 
 .discography-item button:hover {
-  background-color: #e65500;
+  background-color: #080808;
 }
 
 /* ----------- 响应式处理：小屏幕时改为单列或双列 ----------- */

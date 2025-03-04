@@ -4,10 +4,10 @@ import React from 'react';
 function Discography() {
   return (
     <section className="discography">
-      <h2>Discography</h2>
+      <h1>Music Videos</h1>
       <p>
-        From piano-influenced pop to conceptual song cycles, Alejandra’s discography shows
-        an artist in full control of their talents.
+        Barry’s music videos are a visual treat, with stunning cinematography and
+        evocative storytelling that brings his songs to life. Watch the latest videos here.
       </p>
 
       <div className="discography-container">
