@@ -1,15 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   return (
     <nav className="navbar">
-      <div className="logo">Your Site Title</div>
+      <div className="logo"> Barry Tognolini </div>
       <ul>
-        <li>About</li>
-        <li>Gallery</li>
-        <li>Music</li>
-        <li>Blog</li>
-        <li>Contact</li>
+        <li><Link to="/gallery" className="nav-link">Gallery</Link></li>
+        <li><Link to="/music" className="nav-link">Music</Link></li>
+        <li><Link to="/contact" className="nav-link">Contact</Link></li>
       </ul>
       <div>
         {/* 右侧可能有登录按钮或其他内容 */}
